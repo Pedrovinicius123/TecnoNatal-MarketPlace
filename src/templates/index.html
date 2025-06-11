@@ -1,14 +1,95 @@
 {% extends 'base.html' %}
 
-{% block link %} <link rel="stylesheet" href="{{ url_for('static', filename='general.css') }}"> {% endblock link %}
+{% block css %} 
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+{% endblock css %}
 {% block title %} Tecno Natal {% endblock title %}
 {% block content %}
 
 <header>
-    <div class="logo">
-        <img src="" alt="">
-        <h3>TecnoNatal Marketplace</h3>
+    <div class="d-flex p-2 bd-highlight align-items-center justify-content-between logo">
+        <img class="brand" src="{{ url_for('static', filename='img/Tecno_Natal_Logo_1_-removebg-preview.png')}}" alt="Logo do Tecno Natal">
+        
+        <div class="d-flex p-2 bd-highlight flex-column align-items-start right">
+            <div class="d-flex bd-highlight align-items-center profile">
+                <img src="{{ url_for('static', filename='img/profile.png') }}" alt="perfil freepik">
+                <div class="d-flex flex-column justify-content-around name-and-email">
+                    <h5>Lorem Ipsum Dolores</h5>
+                    <p>dolores@example.com</p>
+                </div>
+            </div>
+            <div class="d-flex social">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/instagram-logo.png')}}" alt="Instagram freepik">
+                </a>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/facebook.png') }}" alt="Facebook freepik">
+                </a>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/youtube.png')}}" alt="Youtube freepik">
+                </a>
+            </div>
+        </div>
     </div>
 </header>
+<menu>
+    <ul class="options">
+        <li><a class="flex flex-row" href="#"><img src="{{ url_for('static', filename='img/add.svg') }}" alt="Adicionar produto"><div class="text">Add product</div></a></li>
+        <li><a class="flex flex-row" href="#"><img src="{{ url_for('static', filename='img/profile.png')}}" alt="Perfil"><div class="text">Profile</div></a></li>
+        <li><a class="flex flex-row" href="{{ url_for('login') }}"><img src="{{ url_for('static', filename='img/enter.svg') }}" alt="Login"><div class="text">Login</div></a></li>
+        <li><a class="flex flex-row" href="#"><img src="{{ url_for('static', filename='img/logout.svg') }}" alt="Sair"><div class="text">Logout</div></a></li>
+        <li><a class="flex flex-row" href="#"><img src="{{ url_for('static', filename='img/group.svg') }}" alt="Sobre nós"><div class="text">About us</div></a></li>
+    </ul>
+</menu>
+<main class="grid">
+    <div class="col product">
+        <img src="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" srcset="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" alt="computador, criativo, tecnologia, rede, Internet, escritório, Gadget, o negócio, produtos, comece, digital, Programas, multimídia, desenvolvimento, Companhia, sucesso, marketing, conectados, inovação, Teclado de computador, computador pessoal, aparelho eletrônico, Hardware do computador, Banco de imagens In PxHere">
+        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquid aspernatur temporibus tempore repudiandae quibusdam quae eveniet, ipsam accusamus nihil? <div class="price">Price: $$$</div> </div>
+    </div>
+    <div class="col product">
+        <img src="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" srcset="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" alt="computador, criativo, tecnologia, rede, Internet, escritório, Gadget, o negócio, produtos, comece, digital, Programas, multimídia, desenvolvimento, Companhia, sucesso, marketing, conectados, inovação, Teclado de computador, computador pessoal, aparelho eletrônico, Hardware do computador, Banco de imagens In PxHere">
+        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquid aspernatur temporibus tempore repudiandae quibusdam quae eveniet, ipsam accusamus nihil? <div class="price">Price: $$$</div> </div>
+    </div>
+    <div class="col product">
+        <img src="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" srcset="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" alt="computador, criativo, tecnologia, rede, Internet, escritório, Gadget, o negócio, produtos, comece, digital, Programas, multimídia, desenvolvimento, Companhia, sucesso, marketing, conectados, inovação, Teclado de computador, computador pessoal, aparelho eletrônico, Hardware do computador, Banco de imagens In PxHere">
+        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquid aspernatur temporibus tempore repudiandae quibusdam quae eveniet, ipsam accusamus nihil? <div class="price">Price: $$$</div> </div>
+    </div>
+    <div class="col product">
+        <img src="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" srcset="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" alt="computador, criativo, tecnologia, rede, Internet, escritório, Gadget, o negócio, produtos, comece, digital, Programas, multimídia, desenvolvimento, Companhia, sucesso, marketing, conectados, inovação, Teclado de computador, computador pessoal, aparelho eletrônico, Hardware do computador, Banco de imagens In PxHere">
+        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquid aspernatur temporibus tempore repudiandae quibusdam quae eveniet, ipsam accusamus nihil? <div class="price">Price: $$$</div> </div>
+    </div>
+
+    <div class="col product">
+        <img src="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" srcset="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" alt="computador, criativo, tecnologia, rede, Internet, escritório, Gadget, o negócio, produtos, comece, digital, Programas, multimídia, desenvolvimento, Companhia, sucesso, marketing, conectados, inovação, Teclado de computador, computador pessoal, aparelho eletrônico, Hardware do computador, Banco de imagens In PxHere">
+        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquid aspernatur temporibus tempore repudiandae quibusdam quae eveniet, ipsam accusamus nihil? <div class="price">Price: $$$</div> </div>
+    </div>
+    <div class="col product">
+        <img src="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" srcset="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" alt="computador, criativo, tecnologia, rede, Internet, escritório, Gadget, o negócio, produtos, comece, digital, Programas, multimídia, desenvolvimento, Companhia, sucesso, marketing, conectados, inovação, Teclado de computador, computador pessoal, aparelho eletrônico, Hardware do computador, Banco de imagens In PxHere">
+        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquid aspernatur temporibus tempore repudiandae quibusdam quae eveniet, ipsam accusamus nihil? <div class="price">Price: $$$</div> </div>
+    </div>
+    <div class="col product">
+        <img src="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" srcset="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" alt="computador, criativo, tecnologia, rede, Internet, escritório, Gadget, o negócio, produtos, comece, digital, Programas, multimídia, desenvolvimento, Companhia, sucesso, marketing, conectados, inovação, Teclado de computador, computador pessoal, aparelho eletrônico, Hardware do computador, Banco de imagens In PxHere">
+        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquid aspernatur temporibus tempore repudiandae quibusdam quae eveniet, ipsam accusamus nihil? <div class="price">Price: $$$</div> </div>
+    </div>
+    <div class="col product">
+        <img src="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" srcset="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" alt="computador, criativo, tecnologia, rede, Internet, escritório, Gadget, o negócio, produtos, comece, digital, Programas, multimídia, desenvolvimento, Companhia, sucesso, marketing, conectados, inovação, Teclado de computador, computador pessoal, aparelho eletrônico, Hardware do computador, Banco de imagens In PxHere">
+        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquid aspernatur temporibus tempore repudiandae quibusdam quae eveniet, ipsam accusamus nihil? <div class="price">Price: $$$</div> </div>
+    </div>
+
+    <div class="col product">
+        <img src="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" srcset="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" alt="computador, criativo, tecnologia, rede, Internet, escritório, Gadget, o negócio, produtos, comece, digital, Programas, multimídia, desenvolvimento, Companhia, sucesso, marketing, conectados, inovação, Teclado de computador, computador pessoal, aparelho eletrônico, Hardware do computador, Banco de imagens In PxHere">
+        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquid aspernatur temporibus tempore repudiandae quibusdam quae eveniet, ipsam accusamus nihil? <div class="price">Price: $$$</div> </div>
+    </div>
+    <div class="col product">
+        <img src="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" srcset="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" alt="computador, criativo, tecnologia, rede, Internet, escritório, Gadget, o negócio, produtos, comece, digital, Programas, multimídia, desenvolvimento, Companhia, sucesso, marketing, conectados, inovação, Teclado de computador, computador pessoal, aparelho eletrônico, Hardware do computador, Banco de imagens In PxHere">
+        <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aliquid aspernatur temporibus tempore repudiandae quibusdam quae eveniet, ipsam accusamus nihil? <div class="price">Price: $$$</div> </div>
+    </div>
+
+</main>
+
+{% endblock content %}
 
 
