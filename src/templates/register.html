@@ -8,26 +8,14 @@
 {% endblock css %}
 {% block content %}
     <div class="container flex flex-column justify-content-between align-items-center">
-        <form action="/processing" method="post">
-            <h2>Login</h2>
-            <div class="name-field flex flex-column">
-                <label for="Name">Username</label>
-                <input type="text" id="name">
-            </div>
-            <div class="email-field flex flex-column">
-                <label for="Email">Email</label>
-                <input type="text" id="email">
-            </div>
-            <div class="password-field flex flex-column">
-                <label for="Password"> Password</label>
-                <input type="password" id="password">
-            </div>
-            <div class="password-field flex flex-column">
-                <label for="Password"> Repeat password</label>
-                <input type="password" id="password">
-            </div>
-            <button type="submit" aria-placeholder="submit">Entrar</button>
+        <form action="{{ url_for('users.create_user') }}" method="post">
+            {{form.csrf_token}}
+            {{form.username.label}} {{form.username(class_="name-field")}}
+            {{form.email.label}} {{form.email(class_="name-field")}}
+            {{form.options.label}} {{form.options()}}
+            {{form.password.label}} {{form.password(class_="password-field")}}
+            {{form.rep_password.label}} {{form.rep_password(class_="password-field")}}
+            {{form.submit(class_="button")}}
         </form>
-
     </div>
 {% endblock content %}

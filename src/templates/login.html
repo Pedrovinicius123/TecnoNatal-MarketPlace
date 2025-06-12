@@ -7,20 +7,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 {% endblock css %}
 {% block content %}
-    <div class="container flex flex-column justify-content-between align-items-center">
-        <form action="/login" method="post">
+    <div class="container">
+        <form method="post" action="\login">
             <h2>Login</h2>
-            <div class="name-field flex flex-column">
-                <label for="name">Nome/Email</label>
-                <input type="text" id="name">
-            </div>
-            <div class="password-field flex flex-column">
-                <label for="password"> Password</label>
-                <input type="password" id="password">
-            </div>
-            <button type="submit" aria-placeholder="submit">Entrar</button>
-        </form>
+            {{form.csrf_token}}
+            {{form.email.label}} {{form.email(class_="name-field")}}
+            {{form.password.label}} {{form.password(class_="password-field")}}
+            {{form.submit(class_="button")}}
 
+        </form>
     </div>
+
 {% endblock content %}
 

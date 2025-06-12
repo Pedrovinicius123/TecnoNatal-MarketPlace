@@ -5,28 +5,31 @@ body{
     justify-content: center;
 
     background-image: url("../img/Tecno_Natal_Logo_1_-removebg-preview.png");
-    background-size: 120vh;
+    background-size: 65vh;
     background-repeat: no-repeat;
-    background-position-x: 100px;
+    background-position-x: 450px;
     background-position-y: center;
 }
 
 .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 20vw;
     height: 60vh;
-    margin-right: 100px;
+    margin-right: 450px;
 
 }
 
 .container form{
-    height: 70vh;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     
     gap: 15px;
     background-color: #8fcec9;
-    padding:20px;
+    padding:30px;
 
     border-radius: 20px;
 
@@ -34,11 +37,11 @@ body{
 
 .name-field, .password-field{
     flex-direction: column;
-    height: 10vh;
+    height: 30px;
 
 }
 
-.container form button{
+.container form .button{
     margin-top: 30px;
     height: 30px;
 

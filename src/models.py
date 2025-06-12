@@ -6,7 +6,7 @@ def is_password_strong(password):
     return len(password) >= 8 and re.search(r'[A-Z]', password) and re.search(r'[a-z]', password) and re.search(r'[0-9]', password)
 
 class User(db.Model):
-    __tablename__ = "usuario"
+    __tablename__ = "user"
 
     # Chave primária
     id = db.Column(db.Integer, primary_key=True)
@@ -16,7 +16,7 @@ class User(db.Model):
 
     # Atributos monovalorados
     email = db.Column(db.String(300), nullable=False, unique=True)
-    password_hash = db.Column(db.String(128))
+    #password_hash = db.Column(db.String(128))
 
     # É vendedor
     is_seller = db.Column(db.Boolean, nullable=False, unique=True)

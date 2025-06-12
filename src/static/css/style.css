@@ -11,8 +11,8 @@ header {
 }
 
 .logo .brand{
-    max-width: 20vw;
-    min-width: 10vw;
+    max-width: 30vw;
+    min-width: 300px;
     margin-left: 50px;
 
 
@@ -61,11 +61,11 @@ menu{
     display: flex;
     justify-content:center;
 
-    width: 80vw;
+    width: 90vw;
     padding: 20px;
 
     position:fixed;
-    left: calc(20vw/2);
+    left: calc(10vw/2);
     
     border-radius: 10px;
     box-shadow: 0 10px 20px black;
@@ -85,7 +85,7 @@ menu ul{
 }
 
 menu ul li{
-    margin-right: 20px;
+    margin-right: 50px;
 
 }
 
@@ -181,7 +181,7 @@ main .product .description .price{
     menu{
         flex-direction: column;
         width: 100px;
-        height: 200px;
+        height: 250px;
         padding: 20px;
 
         position:fixed;
