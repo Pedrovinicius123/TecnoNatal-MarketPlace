@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+    Register
+{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock css %}
+{% block content %}
+    <div class="container flex flex-column justify-content-between align-items-center">
+        <form action="/processing" method="post">
+            <h2>Login</h2>
+            <div class="name-field flex flex-column">
+                <label for="Name">Username</label>
+                <input type="text" id="name">
+            </div>
+            <div class="email-field flex flex-column">
+                <label for="Email">Email</label>
+                <input type="text" id="email">
+            </div>
+            <div class="password-field flex flex-column">
+                <label for="Password"> Password</label>
+                <input type="password" id="password">
+            </div>
+            <div class="password-field flex flex-column">
+                <label for="Password"> Repeat password</label>
+                <input type="password" id="password">
+            </div>
+            <button type="submit" aria-placeholder="submit">Entrar</button>
+        </form>
+
+    </div>
+{% endblock content %}

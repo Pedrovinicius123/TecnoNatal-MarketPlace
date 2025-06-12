@@ -22,7 +22,7 @@ class User(db.Model):
     is_seller = db.Column(db.Boolean, nullable=False, unique=True)
 
     # Número de vendas
-    n_sales = db.Column(db.Integer(1000))
+    n_sales = db.Column(db.Integer())
 
     @property
     def password(self):
@@ -49,7 +49,7 @@ class Product(db.Model):
     description = db.Column(db.String(300))
 
     # Vendedor e preços
-    seller = db.Collumn(db.String(100), db.ForeignKey('user.id'), nullable=False, unique=True)
+    seller = db.Column(db.String(100), db.ForeignKey('user.id'), nullable=False, unique=True)
 
     @property
     def price(self):

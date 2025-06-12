@@ -11,7 +11,7 @@ header {
 }
 
 .logo .brand{
-    max-width: 40vw;
+    max-width: 20vw;
     min-width: 10vw;
     margin-left: 50px;
 
@@ -61,11 +61,11 @@ menu{
     display: flex;
     justify-content:center;
 
-    width: 70vw;
+    width: 80vw;
     padding: 20px;
 
     position:fixed;
-    left: calc(30vw/2);
+    left: calc(20vw/2);
     
     border-radius: 10px;
     box-shadow: 0 10px 20px black;
