@@ -9,10 +9,9 @@ from users import bp_users, bp_products
 from dotenv import load_dotenv
 from db import db
 
-import os
+import os, inspect
 
 load_dotenv()
-SESSION_TYPE = 'redis'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -28,7 +27,9 @@ migrate = Migrate(app, db)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    user = request.args.get('u')
+    email = request.args.get('e')
+    return render_template('index.html', user=user, email=email)
 
 @app.route('/profile', methods=['GET', 'POST'])
 @login_required
@@ -49,13 +50,17 @@ def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
         nome_email = login_form.email.data
-        user = User.query.filter_by(email=nome_email, password=request.form['password']).first()
-        if not user:
-            email = User.query.filter_by(email=nome_email, password=request.form['password']).first()
-            if not email:
-                return redirect(url_for('login', err='User not found'))
-            return redirect(url_for('index', user=User.query.filter_by(email=nome_email).first().name, email=email))
-        return redirect(url_for('index', user=user, email=User.query.filter_by(email=nome_email).first().email))
+        password = login_form.password.data
+        user = User.query.filter_by(name=nome_email).first()
+        user_iter = next((u for u in inspect.getmembers(user) if not u.startswith('__')), None)
+
+        if not user or not user.verify_password(password):
+            email = User.query.filter_by(email=nome_email).first()
+
+            if not email or not email.verify_password(password):
+                return redirect(url_for('login', err='User not found/Incorrect password'))
+            return redirect(url_for('', user=User.query.filter_by(email=nome_email).first().name, email=email))
+        return redirect(url_for('', user=user, email=User.query.filter_by(email=nome_email).first().email))
 
     return render_template('login.html', form=login_form)
 

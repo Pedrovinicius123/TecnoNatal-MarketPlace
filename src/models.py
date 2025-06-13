@@ -1,5 +1,5 @@
 from db import db
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import check_password_hash
 import re
 
 def is_password_strong(password):
@@ -9,28 +9,29 @@ class User(db.Model):
     __tablename__ = "user"
 
     # Chave primária
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 
     # Atributo monovalorado
     name = db.Column(db.String(300), nullable=False, unique=True)
 
     # Atributos monovalorados
     email = db.Column(db.String(300), nullable=False, unique=True)
-    #password_hash = db.Column(db.String(128))
-
-    # É vendedor
-    is_seller = db.Column(db.Boolean, nullable=False, unique=True)
+    password_hash = db.Column(db.String(128))
 
     # Número de vendas
     n_sales = db.Column(db.Integer())
 
     @property
-    def password(self):
-        raise ArithmeticError('password is not a readable attribute')
+    def is_seller(self):        
+        raise ArithmeticError('Is_seller is not defined')
 
-    @password.setter
-    def password(self, password):
-        self.password_hash = generate_password_hash(password)
+    @is_seller.setter
+    def is_seller(self, other):
+        self.__is_seller_attr = other
+
+    @is_seller.getter
+    def is_seller(self):
+        return self.__is_seller_attr
 
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
