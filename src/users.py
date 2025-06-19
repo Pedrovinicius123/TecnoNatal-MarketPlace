@@ -1,8 +1,9 @@
 from flask.blueprints import Blueprint
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, session
+from flask_login import login_required
 from werkzeug.security import generate_password_hash
-from models import User
-from forms import RegisterForm
+from models import User, Product
+from forms import RegisterForm, CreateProductForm
 
 from db import db
 
@@ -32,16 +33,30 @@ def create_user():
             err = "User already exists"
             return redirect(url_for('users.create_user', err=err))
 
-        user = User(name=username, email=email, password_hash=generate_password_hash(password), n_sales=0)
-        user.is_seller = option
+        user = User(name=username, email=email, password_hash=generate_password_hash(password))
 
         db.session.add(user)
-        db.session.commit()        
+        db.session.commit()    
 
-        return redirect(url_for('index', u=username, e=email))
+        session['user_id'] = user.id
+        user.is_seller = option 
+        print(user.is_seller) 
+
+        return redirect(url_for('index', user=username, email=email))
 
     return render_template('register.html', form=reg_form)
 
-@bp_products.route('/new')
+@bp_products.route('/new', methods=['POST', 'GET'])
+@login_required
 def create_product():
-    return render_template('assign_product.html')
+    create_product = CreateProductForm()
+    user = User.query.get(int(session['user_id']))
+
+    print(user.is_seller, user.id)
+
+    if create_product.validate_on_submit():
+        product = Product(name=create_product.product_name.data, description=create_product.product_text_desc.data, price=create_product.product_price.data, seller=user.name)
+        user.add_product(product)
+        return redirect(url_for('index', user=user.name, email=user.email))
+    
+    return render_template('assign_product.html', form=create_product)

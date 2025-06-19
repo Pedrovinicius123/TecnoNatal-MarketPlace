@@ -1,0 +1,31 @@
+{% extends 'base.html' %} 
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+
+{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-row align-items-center" style="gap: 100px">
+  <div class="profile-image">
+    <img src="{{ url_for('static', filename='img/profile.png') }}" alt="perfil" width="200px"/>
+  </div>
+  <div class="user-desc">
+    <p><strong>{{ user.name }}</strong>| {{user.email}}</p>
+    
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus nulla
+    vero et quo soluta dolores deserunt molestiae quae numquam est labore odio
+    accusamus placeat voluptates accusantium cum quisquam, ipsum aut obcaecati?
+    Ullam tempora enim repellat error est, esse, ut reprehenderit voluptate quae
+    qui eaque impedit numquam officia laboriosam delectus! Vitae.
+  </div>
+</div>
+<div class="products">
+  {% for product in user.products %}
+  <div class="prod">
+    <img src="url_for('static', filename='tecnologia.jpg')" alt="tecnologia" />
+    {{ product.description }}
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

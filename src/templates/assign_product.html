@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }} ">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock css %}
+
+{% block content %}
+
+<div class="container">
+    <form method="post" action="{{ url_for('products.create_product') }}">
+        <h2>Assign Product</h2>
+        {{form.csrf_token}}
+        {{form.product_name.label}} {{form.product_name(class_="name-field")}}
+        {{form.product_price.label}} {{form.product_price(class_="password-field")}}
+        {{form.product_text_desc.label}} {{form.product_text_desc(class_="text-field", cols=50, rows=10)}}
+        {{form.product_tags.label}} {{form.product_tags(class_="name-field")}}
+        {{form.submit(class_="button")}}
+
+    </form>
+</div>
+
+
+{% endblock %}
+
+

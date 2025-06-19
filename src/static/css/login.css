@@ -7,7 +7,7 @@ body{
     background-image: url("../img/Tecno_Natal_Logo_1_-removebg-preview.png");
     background-size: 65vh;
     background-repeat: no-repeat;
-    background-position-x: 450px;
+    background-position-x: 10vh;
     background-position-y: center;
 }
 
@@ -16,13 +16,11 @@ body{
     align-items: center;
     justify-content: center;
     width: 20vw;
-    height: 60vh;
     margin-right: 450px;
 
 }
 
 .container form{
-    height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,6 +45,11 @@ body{
 
     border-radius: 20px;
     background-color: azure;
+
+}
+
+.container form .text-field{
+    height: 50px;
 
 }
 

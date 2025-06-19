@@ -42,14 +42,15 @@
         <li><a class="flex flex-row" href="{{ url_for('login') }}"><img src="{{ url_for('static', filename='img/enter.svg') }}" alt="Login"><div class="text">Login</div></a></li>
         <li><a class="flex flex-row" href="{{ url_for('users.create_user') }}"><img src="{{ url_for('static', filename='img/add_user.svg') }}" alt="Novo usuario"><div class="text">Create User</div></a></li>
         <li><a class="flex flex-row" href="{{ url_for('logout') }}"><img src="{{ url_for('static', filename='img/logout.svg') }}" alt="Sair"><div class="text">Logout</div></a></li>
-        <li><a class="flex flex-row" href="#"><img src="{{ url_for('static', filename='img/group.svg') }}" alt="Sobre nós"><div class="text">About us</div></a></li>
+        <li><a class="flex flex-row" href="{{ url_for('about') }}"><img src="{{ url_for('static', filename='img/group.svg') }}" alt="Sobre nós"><div class="text">About us</div></a></li>
     </ul>
 </menu>
 <main class="grid">
     {% for prod in products%}
         <div class="col product">
             <img src="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" srcset="https://c.pxhere.com/photos/a3/a2/technology_startup_business_software_internet_web_office_marketing-721151.jpg!d" alt="computador, criativo, tecnologia, rede, Internet, escritório, Gadget, o negócio, produtos, comece, digital, Programas, multimídia, desenvolvimento, Companhia, sucesso, marketing, conectados, inovação, Teclado de computador, computador pessoal, aparelho eletrônico, Hardware do computador, Banco de imagens In PxHere">
-            <div class="description">{{product.description}}<div class="price">Price: {{product.price}}</div> </div>
+            <div class="description">{{prod.description}}<div class="price">Price: {{prod.price}}</div> <small>{{ prod.seller }}</small></div>
+            
         </div>
     {% endfor %}
 

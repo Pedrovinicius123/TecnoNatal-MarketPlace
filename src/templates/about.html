@@ -1,0 +1,142 @@
+{% extends 'base.html' %} {% block link %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/about.css') }}"
+/>
+{% endblock %} {% block content %}
+<main>
+  <section class="d-flex flex-row align-items-center" style="gap: 100px; border: 2px solid black">
+    <img
+      src="{{ url_for('static', filename='img/Tecno_Natal_Logo_1_-removebg-preview.png') }}"
+      alt="Logo Tecno Natal"
+    />
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+      incidunt libero nostrum dolorem a non, repellendus reiciendis maiores
+      numquam minima quibusdam ipsa magni ea labore esse quasi in quis autem
+      mollitia aperiam perspiciatis veniam ipsam voluptates cupiditate! Est
+      dicta laudantium facilis maxime a ut atque, obcaecati ullam.
+    </p>
+  </section>
+
+  <section class="d-flex flex-row align-items-center", style="gap: 100px; border: 2px solid black">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus id
+    facilis minima nemo perferendis eos cum, voluptate atque iusto esse nesciunt
+    tenetur enim dolore reiciendis. Cumque, aut ut, ratione omnis nihil soluta
+    velit, reiciendis necessitatibus corporis veniam aliquam. Veniam consequatur
+    soluta quo, culpa quasi consectetur repellendus exercitationem tempora vitae
+    cum obcaecati, quidem suscipit quibusdam ipsa asperiores aliquam esse sunt
+    repudiandae, aliquid assumenda saepe error praesentium itaque! Mollitia
+    incidunt optio facilis. Magni dicta nesciunt perferendis, facilis nisi
+    incidunt expedita odit sapiente qui, rerum dolores quam voluptates
+    repellendus nulla placeat cum itaque dolorem aut hic molestias aliquid optio
+    fugiat commodi nobis. Unde.
+    <img
+      src="{{url_for('static', filename='img/me.jpg')}}"
+      alt="Me"
+      width="400px"
+    />
+  </section>
+  <section class="d-flex flex-row align-items-center", style="gap: 100px; border: 2px solid black">
+    <img src="{{url_for('static', filename='img/ifrn.png')}}" alt="IFRN" />
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus
+    repudiandae labore rem est vero inventore libero praesentium voluptas illo,
+    quaerat magnam modi corporis aspernatur ipsum neque necessitatibus? Et,
+    totam ipsum!
+  </section>
+  <section class="d-flex flex-row align-items-center", style="gap: 100px; border: 2px solid black">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam neque
+    aspernatur sunt a. Aliquam accusantium optio iusto quibusdam explicabo
+    architecto sapiente. Obcaecati eos in, reiciendis maxime necessitatibus
+    consequatur eius modi!
+  </section>
+
+  <dialog id="dialog">
+    <h2>$$$</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit,
+      consectetur a animi quo ea veniam voluptatum quibusdam voluptates
+      necessitatibus! Libero.
+    </p>
+    <div class="options d-flex flex-row">
+      <button id="button-1">1</button>
+      <button id="button-2">2</button>
+    </div>
+  </dialog>
+
+  <dialog id="dialog-1">
+    <h2>Event</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum sapiente
+      distinctio laboriosam dolore ipsa optio molestias quidem excepturi
+      nostrum. Id.
+    </p>
+    <div class="options d-flex flex-row">
+      <button id="button-more">More</button>
+    </div>
+  </dialog>
+  <script>
+    // Variáveis para controle dos diálogos
+    let dialogShownFirst = false;
+    let dialogShownLast = false;
+
+    // Elementos do DOM
+    const dialog = document.getElementById("dialog");
+    const dialog1 = document.getElementById("dialog-1");
+    const button1 = document.getElementById("button-1");
+    const button2 = document.getElementById("button-2");
+    const buttonMore = document.getElementById("button-more");
+
+    // Evento de rolagem
+    window.addEventListener("scroll", function () {
+      // Verifica a posição de rolagem para o primeiro diálogo
+      if (!dialogShownFirst && window.scrollY > 300) {
+        dialog.showModal();
+        document.body.style.overflow = "hidden";
+        dialogShownFirst = true;
+      }
+
+      // Verifica a posição de rolagem para o segundo diálogo
+      if (!dialogShownLast && window.scrollY > 1000) {
+        // Fecha o primeiro diálogo se ainda estiver aberto
+        if (dialog.open) dialog.close();
+        dialog1.showModal();
+        document.body.style.overflow = "hidden";
+        dialogShownLast = true;
+      }
+    });
+
+    // Eventos dos botões
+    button1.addEventListener("click", () => {
+      dialog.close();
+      document.body.style.overflow = "";
+    });
+
+    button2.addEventListener("click", () => {
+      dialog.close();
+      dialog1.showModal();
+    });
+
+    buttonMore.addEventListener("click", () => {
+      dialog1.close();
+      document.body.style.overflow = "";
+    });
+
+    // Fecha os diálogos ao clicar fora deles
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) {
+        dialog.close();
+        document.body.style.overflow = "";
+      }
+    });
+
+    dialog1.addEventListener("click", (e) => {
+      if (e.target === dialog1) {
+        dialog1.close();
+        document.body.style.overflow = "";
+      }
+    });
+  </script>
+</main>
+
+{% endblock %}

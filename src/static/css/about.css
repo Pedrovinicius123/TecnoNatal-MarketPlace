@@ -1,0 +1,22 @@
+dialog {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 500px;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.options {
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+dialog button {
+    padding: 8px 16px;
+    cursor: pointer;
+}

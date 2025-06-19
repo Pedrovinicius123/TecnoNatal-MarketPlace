@@ -1,11 +1,12 @@
 from db import db
 from werkzeug.security import check_password_hash
+from flask_login import UserMixin
 import re
 
 def is_password_strong(password):
     return len(password) >= 8 and re.search(r'[A-Z]', password) and re.search(r'[a-z]', password) and re.search(r'[0-9]', password)
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = "user"
 
     # Chave primária
@@ -18,48 +19,33 @@ class User(db.Model):
     email = db.Column(db.String(300), nullable=False, unique=True)
     password_hash = db.Column(db.String(128))
 
-    # Número de vendas
-    n_sales = db.Column(db.Integer())
-
+    # É vendedor
+    is_seller = db.Column(db.Boolean, nullable=False, default=False)
+    prods = []
+    
     @property
-    def is_seller(self):        
-        raise ArithmeticError('Is_seller is not defined')
+    def products(self):
+        raise ArithmeticError('Product not defined')
 
-    @is_seller.setter
-    def is_seller(self, other):
-        self.__is_seller_attr = other
+    @products.getter
+    def products(self):
+        return self.prods
 
-    @is_seller.getter
-    def is_seller(self):
-        return self.__is_seller_attr
+    def add_product(self, other):
+        self.prods.append(other)
 
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
     
 
-class Product(db.Model):
-    __tablename__ = "produto"
+class Product:
+    id = 0
+    products = []
+    def __init__(self, seller, name, description, price):
+        self.seller = seller
+        self.name = name
+        self.description = description
+        self.price = price
 
-    # Chave primária
-    id = db.Column(db.Integer, primary_key=True)
-
-    # Nome do produto
-    name = db.Column(db.String(40))
-
-    # Descrição
-    description = db.Column(db.String(300))
-
-    # Vendedor e preços
-    seller = db.Column(db.String(100), db.ForeignKey('user.id'), nullable=False, unique=True)
-
-    @property
-    def price(self):
-        raise AttributeError('Price can not be read directly')
-
-    @price.setter
-    def price(self, new_price):
-        self.price = new_price
-
-    @price.getter
-    def get_price(self):
-        return self.price
+        Product.id += 1
+        Product.products.append(self)
